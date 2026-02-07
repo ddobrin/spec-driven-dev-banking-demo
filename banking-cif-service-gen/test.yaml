@@ -1,0 +1,104 @@
+version: "0.1.0"
+
+# Banking CIF API Test Suite
+
+# 1. Customer Tests
+customer_api:
+  - name: "Create Customer - Success"
+    method: "POST"
+    url: "/api/v1/customers"
+    body:
+      firstName: "Alice"
+      lastName: "Smith"
+      email: "alice.smith@example.com"
+      dateOfBirth: "1990-01-01"
+      cifNumber: "CIF-2024-001"
+    status: 201
+    response_contains:
+      email: "alice.smith@example.com"
+      kycStatus: "PENDING"
+
+  - name: "Create Customer - Validation Error (Missing Email)"
+    method: "POST"
+    url: "/api/v1/customers"
+    body:
+      firstName: "Bob"
+      lastName: "Jones"
+      # email missing
+      cifNumber: "CIF-2024-002"
+    status: 400
+
+  - name: "Get Customer - Found"
+    method: "GET"
+    url: "/api/v1/customers/{customerId}" # Needs dynamic ID replacement in runner
+    status: 200
+    response_contains:
+      firstName: "Alice"
+
+  - name: "Get Customer - Not Found"
+    method: "GET"
+    url: "/api/v1/customers/00000000-0000-0000-0000-000000000000"
+    status: 404
+
+# 2. Account (Financial Application) Tests
+account_api:
+  - name: "Create Account - Success"
+    method: "POST"
+    url: "/api/v1/accounts"
+    body:
+      customerId: "{customerId}" # Dynamic
+      productCode: "CHK-STD"
+      currencyCode: "USD"
+    status: 201
+    response_contains:
+      status: "ACTIVE"
+      balance: 0.00
+
+  - name: "Create Account - Invalid Product"
+    method: "POST"
+    url: "/api/v1/accounts"
+    body:
+      customerId: "{customerId}"
+      productCode: "INVALID-CODE"
+    status: 400
+
+  - name: "Update Account Status"
+    method: "PATCH"
+    url: "/api/v1/accounts/{accountId}/status"
+    body:
+      status: "FROZEN"
+    status: 200
+    response_contains:
+      status: "FROZEN"
+
+# 3. Transaction Tests
+transaction_api:
+  - name: "Deposit - Success"
+    method: "POST"
+    url: "/api/v1/transactions"
+    body:
+      accountId: "{accountId}"
+      type: "DEPOSIT"
+      amount: 500.00
+      currency: "USD"
+      description: "Opening Deposit"
+    status: 201
+    response_contains:
+      amount: 500.00
+      transactionType: "DEPOSIT"
+      balanceAfter: 500.00
+
+  - name: "Withdrawal - Insufficient Funds"
+    method: "POST"
+    url: "/api/v1/transactions"
+    body:
+      accountId: "{accountId}"
+      type: "WITHDRAWAL"
+      amount: 10000.00 # Exceeds 500 balance
+    status: 400 # Or 422 Unprocessable Entity
+    
+  - name: "Get Account Transactions"
+    method: "GET"
+    url: "/api/v1/transactions/account/{accountId}"
+    status: 200
+    # Should be a list containing at least the deposit
