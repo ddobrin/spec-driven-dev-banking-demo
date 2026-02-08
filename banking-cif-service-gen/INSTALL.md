@@ -16,8 +16,9 @@ Implement a Banking CIF (Customer Information Facility) Microservice using the T
 
 2. **Setup the Project:**
    - Create a new Spring Boot 4 project.
+   - Ensure that Spring Boot 4.0.2 is strictly specified in the pom.xml
    - Configure dependencies for Web, JPA (Hibernate), PostgreSQL Driver, and Validation.
-   - Ensure Java 25 is configured in `pom.xml` or `build.gradle`.
+   - Ensure Java 21 is configured in `pom.xml` or `build.gradle`.
 
 3. **Implement the Data Layer:**
    - Create JPA Entities mapping to the tables in `ddl.md` (`Customer`, `Account`, `Product`, `Transaction`).
@@ -28,6 +29,7 @@ Implement a Banking CIF (Customer Information Facility) Microservice using the T
    - Create Service classes for `Customer`, `Account`, and `Transaction`.
    - Implement the logic for CRUD operations.
    - Ensure business rules (e.g., insufficient funds check) are handled.
+   - Use Java POJO/Constructors/Records and do not use Lombok
 
 5. **Implement the API Layer:**
    - Create REST Controllers matching the `SPEC.md` endpoints.
