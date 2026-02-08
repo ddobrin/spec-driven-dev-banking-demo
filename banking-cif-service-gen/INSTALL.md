@@ -7,7 +7,7 @@ This application is distributed as a specification. To build it, you should use 
 Copy and paste the following prompt into your coding agent (e.g., Gemini, Claude, Cursor):
 
 ```text
-Implement a Banking CIF (Customer Information Facility) Microservice in Java 25 and Spring Boot 4.
+Implement a Banking CIF (Customer Information Facility) Microservice using the Techstack described in TECHSTACK.md
 
 1. **Analyze the Requirements:**
    - Read `SPEC.md` for the architecture, API endpoints, and design principles.

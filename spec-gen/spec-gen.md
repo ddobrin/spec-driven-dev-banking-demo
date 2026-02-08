@@ -1,5 +1,5 @@
-Read and analyze in detail the SPEC.md, test.yaml, README.md and INSTALL.md from the /Users/ddobrin/work/dan/oss/whenwords folder             
-                                                                                                                                                 
-Generate the same files for a Banking CIF application with a data model described by the DDL ddl.md                                                                                                                                      
-                                                                                                                                                 
-The Banking application is a microservice with a REST controller, to be built with Spring Boot 4, Java 25 and which would allow CRUD operations for Person, Transactions and Financial Application Write the output to the /output folder
+Read and analyze in detail the SPEC.md, test.yaml, README.md and INSTALL.md from the https://github.com/dbreunig/whenwords repository. 
+
+Generate the same files for a Banking CIF application with a data model described by the DDL schema.sql
+
+The Banking application is a microservice with a REST controller, which would allow CRUD operations for Person, Transactions and transactions. Write the output to the /specgen subfolder

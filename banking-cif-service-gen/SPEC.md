@@ -4,16 +4,6 @@
 
 The Banking CIF (Customer Information Facility) application is a microservice designed to manage core banking entities: Persons (Customers), Financial Applications (Accounts), and Transactions. It provides a RESTful API to perform CRUD operations, adhering to modern banking standards including UUIDs for keys and audit trails.
 
-## Technology Stack
-
-- **Language:** Java 25
-- **Framework:** Spring Boot 4.0.2
-- **Spring Boot profiles:** dev, test, prod
-- **Database:** PostgreSQL (Schema defined in `ddl.md`) for prod, H2 for dev, Postgres Testcontainer for running tests in test profile
-- **TestContainers:** For database testing - use a Postgres container
-- **JSON Library:** Use Jackson 3 for JSON processing
-- **Architecture:** Layered (Controller, Service, Repository)
-
 ## Design Principles
 
 1.  **Stateless REST:** All API interactions are stateless.
