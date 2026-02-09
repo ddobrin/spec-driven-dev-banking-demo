@@ -13,6 +13,7 @@ Implement a Banking CIF (Customer Information Facility) Microservice using the T
    - Read `SPEC.md` for the architecture, API endpoints, and design principles.
    - Read `ddl.md` to understand the PostgreSQL database schema.
    - Read `test.yaml` to understand the required API test scenarios.
+   - Read `TECHSTACK.md` to understand the Tech stack to be used when generating this codebase
 
 2. **Setup the Project:**
    - Create a new Spring Boot 4 project.

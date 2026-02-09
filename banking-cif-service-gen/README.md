@@ -19,6 +19,7 @@ This project follows a "Ghost App" pattern, where the code is generated based on
 -   `test.yaml`: Language-agnostic test cases defining the expected behavior of the API.
 -   `INSTALL.md`: Instructions for an AI agent (or human developer) to build the application.
 -   `ddl.md`: The PostgreSQL schema definition.
+-   `TECHSTACK.md`: A sample tech stack to be used when generating the codebase
 
 ## Technology Requirements
 
